@@ -408,6 +408,11 @@ body{
 #data-received-container-go-bottom:after{
     content: '\2B07';
 }
+
+#data-view-container
+{
+    width: 8ch;
+}
 /* General table */
 
 /**
@@ -506,6 +511,7 @@ body{
 .payload-container
 {
     display: flex;
+    flex-wrap: wrap;
 /*    min-width: 200px;*/
 }
 
