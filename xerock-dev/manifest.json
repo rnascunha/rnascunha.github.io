@@ -38,9 +38,9 @@
             "icons": [{ "src": "./icon-192x192.png", "sizes": "192x192" }]
         },
         {
-            "name": "Data Compare",
-            "short_name": "Data Compare",
-            "description": "Compare data byte representation",
+            "name": "Data Converter",
+            "short_name": "Data Converter",
+            "description": "Convert data byte representation",
             "url": "./tools/data_converter.html",
             "icons": [{ "src": "./icon-192x192.png", "sizes": "192x192" }]
         }
