@@ -75,9 +75,28 @@ d3.tsv('data.tsv').then((data) => {
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%H:%M")));
 
+    // text label for the x axis
+  svg.append("text")
+      .attr("class", "axis")
+      .attr("transform",
+            "translate(" + (width/2) + " ," +
+                           (height - 10) + ")")
+      .style("text-anchor", "middle")
+      .text("Time");
+
   // Add the y Axis
   svg.append("g")
       .call(d3.axisLeft(y));
+
+  // text label for the y axis
+  svg.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0)
+        .attr("x", 0 - (height / 2))
+        .attr("dy", "1em")
+        .attr("class", "axis")
+        .style("text-anchor", "middle")
+        .text("Temperature (C)");
 
   /**
    * Legend
@@ -126,6 +145,14 @@ d3.tsv('data.tsv').then((data) => {
         .style("stroke-width", "2px")
         .attr("r", 4);
 
+    focus.select('g')
+        .data(['stanley', 'env', 'control'], d => d)
+        .append('text')
+        .attr('class', d => `text ${d}`)
+        .style('fill', 'red')
+        .style('stroke', 'blue')
+        .text(d => d);
+
     // append the rectangle to capture mouse
     svg.append("rect")
         .attr("width", width)
@@ -136,11 +163,13 @@ d3.tsv('data.tsv').then((data) => {
           svg.select(".mouse-line")
             .style("opacity", "1");
           focus.style("display", null);
+          focus.selectAll('.text').style('opacity', '1');
         })
         .on("mouseout", function() {
           focus.style("display", "none");
           svg.select(".mouse-line")
             .style("opacity", "0");
+          focus.selectAll('.text').style('opacity', '0');
         })
         .on("mousemove", mousemove);
 
@@ -171,5 +200,11 @@ d3.tsv('data.tsv').then((data) => {
               dm += " " + x(d.time) + "," + 0;
               return dm;
             });
+
+        focus.data(['stanley', 'env', 'control'], dk => dk)
+            .select(d => `.text.${d}`)
+            .attr('x', x(d.time))
+            .attr('y', dn => y(d[dn]))
+            .text(d => d[dn])
   	}
 });

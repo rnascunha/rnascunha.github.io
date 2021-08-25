@@ -40,3 +40,9 @@ svg{
   stroke: white;
   fill: white;
 }
+
+.axis{
+  stroke: white;
+  fill: white;
+  font-size: 2ch;
+}

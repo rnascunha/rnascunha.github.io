@@ -66,9 +66,28 @@ d3.tsv('data.tsv').then((data) => {
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%H:%M")));
 
+  // text label for the x axis
+  svg_diff.append("text")
+      .attr("class", "axis")
+      .attr("transform",
+            "translate(" + (width/2) + " ," +
+                           (height - 10) + ")")
+      .style("text-anchor", "middle")
+      .text("Time");
+
   // Add the y Axis
   svg_diff.append("g")
       .call(d3.axisLeft(y));
+
+  // text label for the y axis
+  svg_diff.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 0)
+        .attr("x", 0 - (height / 2))
+        .attr("dy", "1em")
+        .attr("class", "axis")
+        .style("text-anchor", "end")
+        .text("Temperature Difference(C)");
 
   /**
    * Legend
