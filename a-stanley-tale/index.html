@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>A Stanley Tale</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="graph.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main>
+    <h1>A Stanley Tale</h1>
+    <p>Insulation test of <a href=https://www.stanley1913.com/products/classic-stay-chill-beer-pint target=blank>Stanley
+      Pint Cup with cap</a>.</p>
+    <hr>
+    <h2>Results</h2>
+    <figure id=chart></figure>
+    <figure id=chart_diff></figure>
+    <a href=data.csv title='Download raw data collected' download>&dArr; Raw data</a>
+    <hr>
+    <h2>The Test</h2>
+    <p>It will be capture temperature of three sources:</p>
+    <ul>
+      <li>The Stanley Cup itself, with cap;</li>
+      <li>Another cup, as "control group";</li>
+      <li>Temperature of the envirioment;</li>
+    </ul>
+    <p>The cups will be filled with ice and water. It will be logged every 'n'
+      seconds the the temperature of all sources, together with test time (time
+      from the beginning of the test). The test finishes with 24h or if all the three sources
+      stabelize close enough (how close?).</p>
+    <hr>
+    <h2>Parameters</h2>
+    <ul>
+      <li>Data will be logged every 2 seconds;</li>
+      <li>The cups composition are:
+        <ul>
+          <li>Control cup: made of aluminium / 79g / 750ml;</li>
+          <li>Staley cup: complex / 358g (302g without cap / nominally 0.8lb = 362g) / 600ml (nominally 16oz = 473ml);
+          </li>
+        </ul>
+      </li>
+      <li>Both cups were filled with: 25 cubes of ice and 200ml of water. After all ice melted, it was mesasured:
+        <ul>
+          <li>403ml at Stanley Cup;</li>
+          <li>400ml at control cup;</li>
+      </ul>
+    </li>
+    </ul>
+    <hr>
+    <h2>Sensor</h2>
+    <p>It was used the <a href=https://datasheets.maximintegrated.com/en/ds/DS18B20.pdf target=_blank>DS18B20
+        temperature sensor</a> with 12bit precision (&plusmn; 0.5 &#8451;). The sensors weren't calibrated.</p>
+    <hr>
+    <h2>Data processing</h2>
+    <ul>
+      <li>If in a same instant, any sensor have a invalid read, all data will be dropped;</li>
+      <li>Data will be collapsed every 20 consecutive successful reads, keeping the last read time.</li>
+    </ul>
+    <a href=data.tsv title='Download processed data' download>&dArr; Processed data</a>
+    <hr>
+    <a href=https://www.caustica.com.br/decoracao/copo-americano-kit-com-3 target=_blank>
+      <img src=images/meu_zovo.png>
+    </a>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script src=graph.js></script>
+  <script src=graph_diff.js></script>
+  <script>
+    window.onorientationchange = function() {  	window.location.reload(); };
+  </script>
+</body>
+</html>

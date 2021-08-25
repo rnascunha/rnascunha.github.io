@@ -1,0 +1,42 @@
+svg{
+  background-color: rgba(10,10,10,0.5);
+}
+
+.line {
+  fill: none;
+  stroke-width: 2px;
+}
+
+.stanley{
+  stroke: red;
+}
+
+.env{
+  stroke: steelblue;
+}
+
+.control{
+  stroke: green;
+}
+
+.legend{
+  stroke: white;
+  fill: white;
+}
+
+.legend .stanley{
+  fill: red;
+}
+
+.legend .env{
+  fill: steelblue;
+}
+
+.legend .control{
+  fill: green;
+}
+
+.mouse-line{
+  stroke: white;
+  fill: white;
+}

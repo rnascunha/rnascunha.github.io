@@ -1,0 +1,71 @@
+html, body{
+  height: 100%;
+}
+
+body{
+  background: url('images/stanley-no-bg.png');
+  background-size: cover;
+  background-repeat: repeat-y;
+  background-color: rgba(200, 200, 200, 0.9);
+  padding: 0px;
+  margin: 0px;
+  overflow-x: hidden;
+  font-family: 'Alumni Sans', sans-serif;
+}
+
+main{
+  background-color: rgba(50, 50, 50, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  font-size: 4ch;
+  margin: 0px 10%;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+h1, h2, p{
+  margin: 5px;
+}
+
+a:link{
+  font-weight: bold;
+  font-style: normal;
+  text-decoration: none;
+}
+
+a:link:hover{
+  font-style: italic;
+}
+
+a:visited{
+  color: white;
+}
+
+a[download]{
+  color: white;
+}
+
+figure{
+  width: 100%;
+}
+
+figcaption{
+  text-align: center;
+}
+
+hr{
+  border-top: 1px solid white;
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  body{
+    background-attachment: fixed;
+    background-position: center;
+  }
+  main {
+    margin: 0px;
+  }
+}
