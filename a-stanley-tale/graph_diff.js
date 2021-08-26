@@ -1,23 +1,24 @@
+(function(){
 
-// let main = document.querySelector("main");
+let main = document.querySelector("main");
 
-// function getContentWidth (element)
-// {
-//   let styles = getComputedStyle(element)
-//
-//   return element.clientWidth
-//     - parseFloat(styles.paddingLeft)
-//     - parseFloat(styles.paddingRight)
-// }
-//
-// let margin = {top: 20, right: 15, bottom: 30, left: 30},
-//   width = getContentWidth(main) - margin.left - margin.right,
-//   height = 400 - margin.top - margin.bottom;
+function getContentWidth (element)
+{
+  let styles = getComputedStyle(element)
 
-// let parseDate = d3.timeParse("%H:%M:%S");
+  return element.clientWidth
+    - parseFloat(styles.paddingLeft)
+    - parseFloat(styles.paddingRight)
+}
 
-// let x = d3.scaleTime().range([0, width]);
-// let y = d3.scaleLinear().range([height, 0]);
+let margin = {top: 20, right: 15, bottom: 30, left: 30},
+  width = getContentWidth(main) - margin.left - margin.right,
+  height = 400 - margin.top - margin.bottom;
+
+let parseDate = d3.timeParse("%H:%M:%S");
+
+let x = d3.scaleTime().range([0, width]);
+let y = d3.scaleLinear().range([height, 0]);
 
 let valueStanleyDiff = d3.line()
                 .x(function(d){ return x(d.time); })
@@ -37,6 +38,8 @@ d3.select("#chart_diff").append("figcaption").text("Temperature difference to en
 
 let focus_diff = svg_diff.append("g")
         .style("display", "none");
+
+let bisectDate = d3.bisector(function(d) { return d.time; }).left;
 
 d3.tsv('data.tsv').then((data) => {
   data.forEach(d => {
@@ -179,3 +182,5 @@ d3.tsv('data.tsv').then((data) => {
             });
   	}
 });
+
+})();

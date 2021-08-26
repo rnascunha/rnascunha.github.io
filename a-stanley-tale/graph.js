@@ -1,4 +1,4 @@
-
+(function(){
 let main = document.querySelector("main");
 
 function getContentWidth (element)
@@ -123,7 +123,7 @@ d3.tsv('data.tsv').then((data) => {
     })
     .text(function(d) {
       return d;
-    });
+    })
 
     /**
      *
@@ -144,14 +144,6 @@ d3.tsv('data.tsv').then((data) => {
         .style("fill", "none")
         .style("stroke-width", "2px")
         .attr("r", 4);
-
-    focus.select('g')
-        .data(['stanley', 'env', 'control'], d => d)
-        .append('text')
-        .attr('class', d => `text ${d}`)
-        .style('fill', 'red')
-        .style('stroke', 'blue')
-        .text(d => d);
 
     // append the rectangle to capture mouse
     svg.append("rect")
@@ -184,15 +176,15 @@ d3.tsv('data.tsv').then((data) => {
   	     focus.select("circle.y.stanley")
   	      .attr("transform",
   	         "translate(" + x(d.time) + "," +
-                            y(0.88 * d.stanley) + ")");
+                            y(d.stanley) + ")");
           focus.select("circle.y.env")
            .attr("transform",
               "translate(" + x(d.time) + "," +
-                             y(0.88 * d.env) + ")");
+                             y(d.env) + ")");
          focus.select("circle.y.control")
   	      .attr("transform",
   	         "translate(" + x(d.time) + "," +
-	                        y(0.88 * d.control) + ")");
+	                        y(d.control) + ")");
 
           svg.select(".mouse-line")
             .attr("d", function() {
@@ -200,11 +192,6 @@ d3.tsv('data.tsv').then((data) => {
               dm += " " + x(d.time) + "," + 0;
               return dm;
             });
-
-        focus.data(['stanley', 'env', 'control'], dk => dk)
-            .select(d => `.text.${d}`)
-            .attr('x', x(d.time))
-            .attr('y', dn => y(d[dn]))
-            .text(d => d[dn])
   	}
 });
+})();

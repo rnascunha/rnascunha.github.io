@@ -8,9 +8,11 @@
   <meta property="og:title" content="A Stanley Tale">
   <meta property="og:url" content="https://rnascunha.github.io/a-stanley-tale"/>
   <meta property="og:description" content="A insulation test of Stanley Pint cup">
-  <meta property="og:image" content="https://rnascunha.github.io/a-stanley-tale/images/stanley-little.png">
+  <meta property="og:image" content="https://rnascunha.github.io/a-stanley-tale/images/logo-200x200.png">
   <meta property="og:type" content="article" />
   <title>A Stanley Tale</title>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="graph.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,7 +31,7 @@
     <a href=data.csv title='Download raw data collected' download>&dArr; Raw data</a>
     <hr>
     <h2>The Test</h2>
-    <p>It will be capture temperature of three sources:</p>
+    <p>It will be capture temperature from three sources:</p>
     <ul>
       <li>The Stanley Cup itself, with cap;</li>
       <li>Another cup, as "control group";</li>
@@ -65,7 +67,7 @@
     <h2>Data processing</h2>
     <ul>
       <li>If in a same instant, any sensor have a invalid read, all data will be dropped;</li>
-      <li>Data will be collapsed every 20 consecutive successful reads, keeping the last read time.</li>
+      <li>Data will be collapsed to the avarege every 20 consecutive successful reads, keeping the last read time.</li>
     </ul>
     <a href=data.tsv title='Download processed data' download>&dArr; Processed data</a>
     <hr>
@@ -78,6 +80,7 @@
   <script src=graph_diff.js></script>
   <script>
     window.onorientationchange = function() {  	window.location.reload(); };
+    window.addEventListener('resize', () => window.location.reload()); 
   </script>
 </body>
 </html>
